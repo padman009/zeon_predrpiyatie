@@ -23,6 +23,8 @@ class BranchController extends Controller
 
     public function show($id)
     {
-        return Branch::with('employees')->findOrFail($id);
+        return Branch::with(['employees' => function ($query) {
+            $query->orderBy('name', 'asc');
+        }])->findOrFail($id);
     }
 }
