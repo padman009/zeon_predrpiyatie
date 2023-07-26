@@ -11,13 +11,13 @@ class EmployeeController extends Controller
     {
         $request->validate([
             'name' => 'required|string',
-            'position' => 'required|in:Engineer,Employee',
+            'role_id' => 'required|in:Roles',
         ]);
 
         return Employee::create([
             'branch_id' => $branchId,
             'name' => $request->input('name'),
-            'position' => $request->input('position'),
+            'role_id' => $request->input('role_id'),
         ]);
     }
 }
